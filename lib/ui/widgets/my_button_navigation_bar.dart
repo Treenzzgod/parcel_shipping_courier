@@ -16,6 +16,8 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   List<Widget> pageList = <Widget>[
     HomeScreen(),
     SendParcelScreen(),
+    SendParcelCheckoutScreen(),
+    SendParcelDetailScreen(),
     ParcelCenterScreen(),
   ];
 
@@ -39,7 +41,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
               icon: _selectedIndex == 0
                   ? SvgPicture.asset('assets/images/icon_my_parcels.svg')
                   : SvgPicture.asset('assets/images/icon_my_parcels_grey.svg'),
-              label: 'My parcels'),
+              label: 'Home Screen'),
           BottomNavigationBarItem(
               icon: _selectedIndex == 1
                   ? SvgPicture.asset('assets/images/icon_send_parcel.svg')
@@ -50,7 +52,19 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
                   ? SvgPicture.asset('assets/images/icon_parcel_center.svg')
                   : SvgPicture.asset(
                       'assets/images/icon_parcel_center_grey.svg'),
-              label: 'Parcel center'),
+              label: 'Parcel Checkout'),
+          BottomNavigationBarItem(
+              icon: _selectedIndex == 3
+                  ? SvgPicture.asset('assets/images/icon_parcel_center.svg')
+                  : SvgPicture.asset(
+                      'assets/images/icon_parcel_center_grey.svg'),
+              label: 'Detail'),
+          BottomNavigationBarItem(
+              icon: _selectedIndex == 4
+                  ? SvgPicture.asset('assets/images/icon_parcel_center.svg')
+                  : SvgPicture.asset(
+                      'assets/images/icon_parcel_center_grey.svg'),
+              label: 'Parcel Center'),
         ],
         currentIndex: _selectedIndex,
         unselectedItemColor: Theme.of(context).unselectedWidgetColor,
