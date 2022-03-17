@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:parcel_shipping_courier/ui/screens/home_screen.dart';
+import 'package:parcel_shipping_courier/ui/screens/screens.dart';
 
 class MyBottomNavigationBar extends StatefulWidget {
   const MyBottomNavigationBar({Key? key}) : super(key: key);
@@ -11,40 +13,50 @@ class MyBottomNavigationBar extends StatefulWidget {
 class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
+  List<Widget> pageList = <Widget>[
+    HomeScreen(),
+    SendParcelScreen(),
+    ParcelCenterScreen(),
+  ];
+
+  void _onItemTapped(int value) {
     setState(() {
-      _selectedIndex = index;
+      _selectedIndex = value;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      selectedFontSize: 12,
-      unselectedFontSize: 12,
-      selectedLabelStyle: Theme.of(context).textTheme.headline5,
-      unselectedLabelStyle: Theme.of(context).textTheme.headline5,
-      items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: _selectedIndex == 0
-                ? SvgPicture.asset('assets/images/icon_my_parcels.svg')
-                : SvgPicture.asset('assets/images/icon_my_parcels_grey.svg'),
-            label: 'My parcels'),
-        BottomNavigationBarItem(
-            icon: _selectedIndex == 1
-                ? SvgPicture.asset('assets/images/icon_send_parcel.svg')
-                : SvgPicture.asset('assets/images/icon_send_parcel_grey.svg'),
-            label: 'Send parcel'),
-        BottomNavigationBarItem(
-            icon: _selectedIndex == 2
-                ? SvgPicture.asset('assets/images/icon_parcel_center.svg')
-                : SvgPicture.asset('assets/images/icon_parcel_center_grey.svg'),
-            label: 'Parcel center'),
-      ],
-      currentIndex: _selectedIndex,
-      unselectedItemColor: Theme.of(context).unselectedWidgetColor,
-      selectedItemColor: Colors.black,
-      onTap: _onItemTapped,
+    return Scaffold(
+      body: pageList[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        selectedFontSize: 12,
+        unselectedFontSize: 12,
+        selectedLabelStyle: Theme.of(context).textTheme.headline5,
+        unselectedLabelStyle: Theme.of(context).textTheme.headline5,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: _selectedIndex == 0
+                  ? SvgPicture.asset('assets/images/icon_my_parcels.svg')
+                  : SvgPicture.asset('assets/images/icon_my_parcels_grey.svg'),
+              label: 'My parcels'),
+          BottomNavigationBarItem(
+              icon: _selectedIndex == 1
+                  ? SvgPicture.asset('assets/images/icon_send_parcel.svg')
+                  : SvgPicture.asset('assets/images/icon_send_parcel_grey.svg'),
+              label: 'Send parcel'),
+          BottomNavigationBarItem(
+              icon: _selectedIndex == 2
+                  ? SvgPicture.asset('assets/images/icon_parcel_center.svg')
+                  : SvgPicture.asset(
+                      'assets/images/icon_parcel_center_grey.svg'),
+              label: 'Parcel center'),
+        ],
+        currentIndex: _selectedIndex,
+        unselectedItemColor: Theme.of(context).unselectedWidgetColor,
+        selectedItemColor: Colors.black,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
