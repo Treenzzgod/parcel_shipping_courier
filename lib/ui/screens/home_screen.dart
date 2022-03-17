@@ -252,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             },
-            childCount: 2,
+            childCount: 4,
           ),
         ),
       ],
